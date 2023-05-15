@@ -85,3 +85,4 @@ git merge upstream/master
 git push --set-upstream <repository> <branch>（或 git push -u <repository> <branch>
 
 --连续两次需要输入KEY, 再试一次。
+-git remote set-url origin .../My_fork_Project.git/ 
