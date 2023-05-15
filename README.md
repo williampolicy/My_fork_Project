@@ -84,4 +84,4 @@ git merge upstream/master
 两条命令的区别在于 --set-upstream (或 -u 简写) 选项的存在与否。这个选项用于设置新的上游分支。
 git push --set-upstream <repository> <branch>（或 git push -u <repository> <branch>
 
-	
+--连续两次需要输入KEY, 再试一次。
