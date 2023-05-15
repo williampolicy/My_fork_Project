@@ -86,3 +86,31 @@ git push --set-upstream <repository> <branch>（或 git push -u <repository> <br
 
 --连续两次需要输入KEY, 再试一次。
 -git remote set-url origin .../My_fork_Project.git/ 
+- Well DONE . git remote set-url origin .../My_fork_Project.git/ 这种方法可行。
+
+
+### push （一次性操作）与 git remote set-url origin <url> ，后者可以更改远程仓库的设置
+git remote set-url origin <url>
+
+
+	git remote set-url origin <url> 命令是用于改变已经存在的名为 origin 的远程仓库的 URL。在这个命令中，你使用的 URL 包含了一个 GitHub 生成的个人访问令牌 (Personal Access Token, PAT)，它可以作为你的密码使用。
+
+这个命令的背后原理是：
+
+当你运行 git push origin 命令时，Git 会去查找名为 origin 的远程仓库的 URL。在你运行 git remote set-url 命令后，origin 的 URL 就被设置为了你提供的 URL。
+
+这个 URL 包含了你的个人访问令牌，所以当你推送到 origin 时，Git 会将这个令牌作为你的密码发送到 GitHub。
+
+GitHub 收到这个令牌后，会检查它是否有效，以及是否有权限推送到指定的仓库。如果检查通过，那么推送就会被允许。
+
+因此，这个命令的效果就是将你的个人访问令牌保存为 origin 远程仓库的一部分，这样你就不需要在每次推送时手动输入密码了。
+
+需要注意的是，你的个人访问令牌在 Git 的配置中是明文保存的，因此你需要保护好你的计算机，以防止其他人访问到这个令牌。此外，如果你的令牌被泄露，你应立即在 GitHub 上撤销它，以防止被滥用。
+
+这是因为 git push 命令只是一个一次性的操作，用于将你的更改推送到远程仓库。它的设计就是为了执行这个操作，然后结束。它并不会更改 Git 的配置或记住你使用的 URL。
+
+而 git remote set-url 命令则是用于更改 Git 的配置，将你提供的 URL 设置为指定的远程仓库的新 URL。这个新 URL 会被保存在 Git 的配置中，所以在以后的推送中，Git 会自动使用这个 URL。
+
+这就是为什么你需要使用 git remote set-url 命令来保存你的个人访问令牌。这个命令会将你的令牌作为远程仓库 URL 的一部分保存在 Git 的配置中，这样你就不需要在每次推送时手动输入你的令牌了。
+
+
